@@ -86,7 +86,7 @@ android {
         create("staging") {
             initWith(getByName("staging"))
             dimension = "version"
-            applicationIdSuffix = ".staging"
+           // applicationIdSuffix = ".staging"
             versionNameSuffix = "-staging"
            // signingConfig = signingConfigs.getByName("staging")
         }
@@ -97,7 +97,7 @@ android {
     }
     buildTypes {
         getByName("debug") {
-            applicationIdSuffix = ".debug"
+            //applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
             isDebuggable = true
             buildConfigField("String", "Template_HOST", "\"192.168.10.34\"")
@@ -136,12 +136,15 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.hilt.compose.navigation)
+    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     // Network and Local
     implementation(libs.androidx.room.runtime)
     implementation(libs.compose.material3)
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.tooling)
+    //FireBase
+    implementation(libs.firebase.database)
     implementation(libs.hilt.android)
     implementation(libs.ktor.client.core)
     implementation(libs.square.moshi.kotlin)
@@ -153,9 +156,6 @@ dependencies {
     implementation(projects.storage)
     //Module
     implementation(projects.theme)
-    //FireBase
-    implementation(libs.firebase.database)
-    implementation(libs.androidx.hilt.navigation.compose)
 
     // Test
     debugImplementation(platform(libs.compose.bom))

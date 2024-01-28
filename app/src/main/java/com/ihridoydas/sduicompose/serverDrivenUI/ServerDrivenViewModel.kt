@@ -1,3 +1,27 @@
+/*
+* MIT License
+*
+* Copyright (c) 2024 Hridoy Chandra Das
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+*/
 package com.ihridoydas.sduicompose.serverDrivenUI
 
 import androidx.lifecycle.ViewModel
@@ -19,14 +43,13 @@ import kotlinx.coroutines.flow.stateIn
 import timber.log.Timber
 
 @HiltViewModel
-class ServerDrivenViewModel : ViewModel(){
+class ServerDrivenViewModel : ViewModel() {
     private val realtimeDatabase = Firebase.database
     private val dataNode = realtimeDatabase.getReference("ui/data")
     private val layoutNode = realtimeDatabase.getReference("ui/layout")
     private val metaNode = realtimeDatabase.getReference("ui/meta")
 
-
-    //Firebase models
+    // Firebase models
     data class NewsItem(
         val id: String = "",
         val title: String = "",
@@ -39,8 +62,8 @@ class ServerDrivenViewModel : ViewModel(){
         val mode: String = "",
     )
 
-    //Firebase Flow
-    private val _dataFlow: Flow<List<NewsItem>> = callbackFlow {
+    // Firebase Flow
+    private val dataFlow: Flow<List<NewsItem>> = callbackFlow {
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val newsItems = snapshot.children.map {
@@ -50,7 +73,8 @@ class ServerDrivenViewModel : ViewModel(){
                                 it.key == "isFavorite"
                             }!!.getValue<String>()!!.run {
                                 return@run this == "true"
-                            })
+                            },
+                        )
                 }
                 trySend(newsItems)
             }
@@ -58,17 +82,16 @@ class ServerDrivenViewModel : ViewModel(){
             override fun onCancelled(error: DatabaseError) {
                 // Not worrying about this for the demo
             }
-
         }
         dataNode.addValueEventListener(listener)
-        awaitClose {dataNode.removeEventListener(listener)}
+        awaitClose { dataNode.removeEventListener(listener) }
     }
-    private val _layoutFlow: Flow<Map<String,LayoutType>> = callbackFlow {
-        fun parse(snapshot: DataSnapshot) : LayoutType {
+    private val layoutFlow: Flow<Map<String, LayoutType>> = callbackFlow {
+        fun parse(snapshot: DataSnapshot): LayoutType {
             val type = snapshot.children.find {
                 it.key == "type"
             }!!.getValue<String>()!!
-            return when (type){
+            return when (type) {
                 "list" -> LayoutType.List
                 "gird" -> LayoutType.Grid(
                     columns = snapshot.children.find { it.key == "columns" }!!.getValue<Int>()!!,
@@ -92,27 +115,28 @@ class ServerDrivenViewModel : ViewModel(){
             }
         }
         layoutNode.addValueEventListener(listener)
-        awaitClose {layoutNode.removeEventListener(listener)}
+        awaitClose { layoutNode.removeEventListener(listener) }
     }
-    private val _metaFlow: Flow<Meta> = callbackFlow {
+    private val metaFlow: Flow<Meta> = callbackFlow {
         val listener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-               trySend(snapshot.getValue<Meta>()!!)
+                trySend(snapshot.getValue<Meta>()!!)
             }
 
             override fun onCancelled(error: DatabaseError) {
                 // Not worrying about this for the demo
             }
-
         }
         metaNode.addValueEventListener(listener)
-        awaitClose {metaNode.removeEventListener(listener)}
+        awaitClose { metaNode.removeEventListener(listener) }
     }
 
-    //UI Flow
+    // UI Flow
     val layoutInformationFlow: StateFlow<LayoutInformation?> = combine(
-        _dataFlow, _layoutFlow, _metaFlow,
-    ){newItems,layoutTypeMap,meta ->
+        dataFlow,
+        layoutFlow,
+        metaFlow,
+    ) { newItems, layoutTypeMap, meta ->
         if (newItems.isEmpty()) return@combine null
         val layoutMetaInformation = LayoutMeta(
             layoutType = layoutTypeMap[meta.mode] ?: LayoutType.List,
@@ -122,5 +146,5 @@ class ServerDrivenViewModel : ViewModel(){
             layoutMeta = layoutMetaInformation,
             layoutData = newItems,
         )
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(),null)
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), null)
 }

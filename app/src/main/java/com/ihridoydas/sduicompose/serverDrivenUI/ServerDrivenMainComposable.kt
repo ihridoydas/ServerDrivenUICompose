@@ -1,3 +1,27 @@
+/*
+* MIT License
+*
+* Copyright (c) 2024 Hridoy Chandra Das
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in all
+* copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+*/
 package com.ihridoydas.sduicompose.serverDrivenUI
 
 import androidx.compose.foundation.background
@@ -8,7 +32,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,7 +48,6 @@ import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.FavoriteBorder
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
-import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -33,25 +55,24 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.ihridoydas.sduicompose.common.ROUNDED_CORNER_SHAPE_PERCENT
 import timber.log.Timber
-
 
 @Composable
 fun ServerDrivenMainComposable(viewModel: ServerDrivenViewModel = viewModel()) {
     val layoutInformation by viewModel.layoutInformationFlow.collectAsState()
 
-    when(layoutInformation){
+    when (layoutInformation) {
         null -> LoadingComponent()
         else -> NewsFeedScreen(layoutInformation = layoutInformation!!)
     }
-
 }
 
 sealed interface LayoutType {
     data object List : LayoutType
+
     data class Grid(val columns: Int) : LayoutType
 }
 
@@ -67,19 +88,18 @@ data class LayoutInformation(
 
 @Composable
 fun NewsFeedScreen(layoutInformation: LayoutInformation) {
-    when (layoutInformation.layoutMeta.layoutType){
+    when (layoutInformation.layoutMeta.layoutType) {
         is LayoutType.List -> {
             LazyColumn(
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-            ){
-                items(items = layoutInformation.layoutData, key = {newsItem -> newsItem.id}){
+            ) {
+                items(items = layoutInformation.layoutData, key = { newsItem -> newsItem.id }) {
                     NewsItemComponent(
                         newsItem = it,
                         favoriteEnabled = layoutInformation.layoutMeta.favoriteEnabled,
                     )
                 }
-
             }
         }
         is LayoutType.Grid -> {
@@ -88,8 +108,8 @@ fun NewsFeedScreen(layoutInformation: LayoutInformation) {
                 contentPadding = PaddingValues(16.dp),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
-            ){
-                items(items = layoutInformation.layoutData, key = {newsItem -> newsItem.id}){
+            ) {
+                items(items = layoutInformation.layoutData, key = { newsItem -> newsItem.id }) {
                     NewsItemComponent(
                         newsItem = it,
                         favoriteEnabled = layoutInformation.layoutMeta.favoriteEnabled,
@@ -97,28 +117,27 @@ fun NewsFeedScreen(layoutInformation: LayoutInformation) {
                 }
             }
         }
-
     }
-
 }
 
 @Composable
 fun LoadingComponent() {
-    Box(modifier = Modifier.fillMaxSize()){
+    Box(modifier = Modifier.fillMaxSize()) {
         CircularProgressIndicator(
             modifier = Modifier
                 .size(50.dp)
                 .align(Alignment.Center),
             color = Color.Blue,
-           progress = 100f,
+            progress = 100f,
         )
-
     }
-
 }
 
 @Composable
-fun NewsItemComponent(newsItem: ServerDrivenViewModel.NewsItem,favoriteEnabled: Boolean) {
+fun NewsItemComponent(
+    newsItem: ServerDrivenViewModel.NewsItem,
+    favoriteEnabled: Boolean,
+) {
     Column(
         modifier = Modifier
             .background(
@@ -130,8 +149,8 @@ fun NewsItemComponent(newsItem: ServerDrivenViewModel.NewsItem,favoriteEnabled: 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Text(text = newsItem.title)
             Spacer(modifier = Modifier.weight(1f))
-            if(favoriteEnabled){
-                val icon = if(newsItem.isFavorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder
+            if (favoriteEnabled) {
+                val icon = if (newsItem.isFavorite) Icons.Rounded.Favorite else Icons.Rounded.FavoriteBorder
                 Icon(
                     imageVector = icon,
                     contentDescription = "Favorite",
@@ -144,12 +163,10 @@ fun NewsItemComponent(newsItem: ServerDrivenViewModel.NewsItem,favoriteEnabled: 
                 modifier = Modifier
                     .height(1.dp)
                     .fillMaxWidth()
-                    .background(color = Color.DarkGray, shape = RoundedCornerShape(50)),
+                    .background(color = Color.DarkGray, shape = RoundedCornerShape(ROUNDED_CORNER_SHAPE_PERCENT)),
             )
             Spacer(modifier = Modifier.height(15.dp))
             Text(text = newsItem.description)
-
         }
-
     }
 }
