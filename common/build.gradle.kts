@@ -1,6 +1,7 @@
 plugins {
     id(libs.plugins.androidLibrary.get().pluginId)
     id(libs.plugins.kotlin.android.get().pluginId)
+    id(libs.plugins.google.services.get().pluginId)
 }
 
 android {
@@ -15,6 +16,7 @@ dependencies {
     implementation(projects.theme)
     // Gradle
     implementation(platform(libs.compose.bom))
+    implementation(platform(libs.firebase.bom))
     // UI
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.android.material)
@@ -28,5 +30,9 @@ dependencies {
 
     implementation(libs.androidx.hilt.compose.navigation)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+
+    //FireBase
+    implementation(libs.firebase.database)
+    implementation (libs.androidx.lifecycle.runtime.compose)
 
 }

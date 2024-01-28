@@ -33,7 +33,7 @@ import com.ihridoydas.sduicompose.navigation.ScreenDestinations
 import com.ihridoydas.sduicompose.navigation.navigateTo
 import com.ihridoydas.sduicompose.navigation.screen
 import com.ihridoydas.sduicompose.screens.HomeScreen
-import com.ihridoydas.sduicompose.screens.ViewScreen
+import com.ihridoydas.sduicompose.screens.ServerDrivenUIScreen
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -48,8 +48,8 @@ fun MainAnimationNavHost(
         screen(ScreenDestinations.HomeScreen.route) {
             HomeScreen(navController = navController)
         }
-        screen(ScreenDestinations.ViewScreen.route) {
-            ViewScreen(
+        screen(ScreenDestinations.ServerDrivenUIScreen.route) {
+            ServerDrivenUIScreen(
                 onBackPress = {
                     // navigateTo のためNavHostControllerを作成します。
                     navController.navigateTo(ScreenDestinations.HomeScreen.route)

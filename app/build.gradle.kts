@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.hilt) apply false
     id(libs.plugins.sortDependencies.get().pluginId)
     alias(libs.plugins.dokka) apply false
+    id(libs.plugins.google.services.get().pluginId)
 }
 
 android {
@@ -123,6 +124,7 @@ dependencies {
 
     // Gradle
     implementation(platform(libs.compose.bom))
+    implementation(platform(libs.firebase.bom))
     // UI
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.android.material)
@@ -151,6 +153,9 @@ dependencies {
     implementation(projects.storage)
     //Module
     implementation(projects.theme)
+    //FireBase
+    implementation(libs.firebase.database)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     // Test
     debugImplementation(platform(libs.compose.bom))

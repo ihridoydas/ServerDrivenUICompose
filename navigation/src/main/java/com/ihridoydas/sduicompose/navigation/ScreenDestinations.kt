@@ -28,5 +28,5 @@ sealed class ScreenDestinations(val route: String) {
 
     // Destinations
     data object HomeScreen : ScreenDestinations("home_screen")
-    data object ViewScreen : ScreenDestinations("view_screen")
+    data object ServerDrivenUIScreen : ScreenDestinations("server_driven_ui_screen")
 }

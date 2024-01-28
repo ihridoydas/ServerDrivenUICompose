@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "209443951798",
+    "project_id": "serverdrivenuicompose-fc402",
+    "storage_bucket": "serverdrivenuicompose-fc402.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209443951798:android:a7ce44f4b43815e3874217",
+        "android_client_info": {
+          "package_name": "com.ihridoydas.sduicompose"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYLOC-CXspAv-HoK7Ox40x-zdOVUVm6RM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209443951798:android:510b933f111fb552874217",
+        "android_client_info": {
+          "package_name": "com.ihridoydas.sduicompose.develop.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYLOC-CXspAv-HoK7Ox40x-zdOVUVm6RM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
