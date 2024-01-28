@@ -1,0 +1,18 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:template.theme.splashScreen////PointingToDeclaration/theme/template.theme.splashScreen/index.html
+$dokka.location:template.theme.splashScreen/SplashViewModel.Companion///PointingToDeclaration/theme/template.theme.splashScreen/-splash-view-model/-companion/index.html
+$dokka.location:template.theme.splashScreen/SplashViewModel.Companion/DELAY_DURATION/#/PointingToDeclaration/theme/template.theme.splashScreen/-splash-view-model/-companion/-d-e-l-a-y_-d-u-r-a-t-i-o-n.html
+$dokka.location:template.theme.splashScreen/SplashViewModel///PointingToDeclaration/theme/template.theme.splashScreen/-splash-view-model/index.html
+$dokka.location:template.theme.splashScreen/SplashViewModel/SplashViewModel/#/PointingToDeclaration/theme/template.theme.splashScreen/-splash-view-model/-splash-view-model.html
+$dokka.location:template.theme.splashScreen/SplashViewModel/isLoading/#/PointingToDeclaration/theme/template.theme.splashScreen/-splash-view-model/is-loading.html
+$dokka.location:template.theme////PointingToDeclaration/theme/template.theme/index.html
+$dokka.location:template.theme//Purple200/#/PointingToDeclaration/theme/template.theme/-purple200.html
+$dokka.location:template.theme//Purple500/#/PointingToDeclaration/theme/template.theme/-purple500.html
+$dokka.location:template.theme//Shapes/#/PointingToDeclaration/theme/template.theme/-shapes.html
+$dokka.location:template.theme//Teal200/#/PointingToDeclaration/theme/template.theme/-teal200.html
+$dokka.location:template.theme//TemplateTheme/#kotlin.Boolean#kotlin.Boolean#kotlin.Function0[kotlin.Unit]/PointingToDeclaration/theme/template.theme/-template-theme.html
+$dokka.location:template.theme//Typography/#/PointingToDeclaration/theme/template.theme/-typography.html
+template.theme
+template.theme.splashScreen
+
