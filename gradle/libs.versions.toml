@@ -1,9 +1,12 @@
 [versions]
 androidApplication = "8.2.2"
 coreSplashscreen = "1.0.1"
+googleServices = "4.4.0"
+hiltNavigationCompose = "1.1.0"
 kotlinAndroid = "1.9.21"
 kotlinJvm = "1.9.20"
 kotlinSerialization = "1.9.21"
+lifecycleRuntimeCompose = "2.7.0"
 protobufGradlePlugin = "0.9.4"
 timber = "5.0.1"
 spotless = "6.19.0"
@@ -47,10 +50,17 @@ leakCanary = "2.12"
 ktlint = "1.0.1"
 kotlinter = "4.0.0"
 dokkaVersion = '1.9.10'
+firebaseBOM = '32.7.1'
+firebaseDatabase = "20.3.0"
 
 [libraries]
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBOM" }
+firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }
+google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
 #ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
@@ -130,5 +140,6 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 protobuf = { id = "com.google.protobuf", version.ref = "protobufGradlePlugin" }
 androidLibrary = { id = "com.android.library", version.ref = "androidApplication" }
 dokka= {id = "org.jetbrains.dokka", version.ref = "dokkaVersion"}
+google-services= {id = "com.google.gms.google-services", version.ref = "googleServices"}
 
 

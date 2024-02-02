@@ -41,6 +41,7 @@ buildscript {
         classpath (libs.protobuf.gradle.plugin)
         classpath (libs.dokkaDocumentation.get())
         classpath (libs.dokka.gradle.plugin)
+        classpath (libs.google.services)
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

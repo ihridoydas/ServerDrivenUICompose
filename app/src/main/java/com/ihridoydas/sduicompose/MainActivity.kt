@@ -43,7 +43,6 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
-import dagger.hilt.android.AndroidEntryPoint
 import com.ihridoydas.sduicompose.common.DURATION
 import com.ihridoydas.sduicompose.common.VALUES_X
 import com.ihridoydas.sduicompose.common.VALUES_Y
@@ -51,6 +50,7 @@ import com.ihridoydas.sduicompose.common.utils.RootUtil
 import com.ihridoydas.sduicompose.theme.ServerDrivenUIComposeTheme
 import com.ihridoydas.sduicompose.theme.splashScreen.SplashViewModel
 import com.ihridoydas.sduicompose.ui.MainAnimationNavHost
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
 @AndroidEntryPoint

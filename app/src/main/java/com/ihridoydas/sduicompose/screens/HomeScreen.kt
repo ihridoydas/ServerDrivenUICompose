@@ -50,14 +50,14 @@ fun HomeScreen(navController: NavController) {
                 modifier = Modifier
                     .size(300.dp, 60.dp),
                 onClick = {
-                    navController.navigate(ScreenDestinations.ViewScreen.route) {
+                    navController.navigate(ScreenDestinations.ServerDrivenUIScreen.route) {
                         popUpTo(ScreenDestinations.HomeScreen.route) {
                             inclusive = false
                         }
                     }
                 },
             ) {
-                Text(text = "ビュー画面へナビゲーション")
+                Text(text = "Server Driven UI Screen")
             }
         }
     }

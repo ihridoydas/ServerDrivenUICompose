@@ -1,20 +1,6 @@
-# Android App Template
+# ServerDrivenUICompose
 
-This is a GitHub template repository intended to kickstart development on an Android application. This project comes set with a handful of tools that [Hridoy Chandra Das](https://github.com/ihridoydas) finds important and relevant to every project. If you think something is missing, or feel strongly that a setup should be changed, please submit an [Issue](https://github.com/ihridoydas/BaseTemplateAndroidApp/issues/new).
-
-## Why This Template?
-
-The purpose of this template is to avoid any opinions on writing code. The developers should have the freedom to choose their own architecture, third party dependencies, package structure, and more. 
-
-This template _is_ opinionated about developer tooling. Dependency management is configured, git hooks are defined, code formatting and static analysis are all there, and it even has pull request templates. The purpose of this repo is to help you get started building your next project with confidence in your code, and not telling you how to write it. **Inspired by** [AndroidAppTemplate](https://github.com/AdamMc331/AndroidAppTemplate)
-
-## Using This Template
-
-To use this template in your own project, click the "Use this template" button at the top right of the repository. Once you do, a repository will be created for your account that you can clone and use on your device.
-
-To setup this repository to your needs, open the [setup.gradle](buildscripts/setup.gradle) file 
-and tweak the `renameConfig` block to your needs. After that, you can run the `renameAllModules` →　`./gradlew renameAllModules`
-gradle task to have the app module's package name and relevant strings replaced.
+Build Server Driven UI with Firebase and Jetpack Compose.
 
 ## What's Included
 
@@ -31,7 +17,8 @@ The dependencies in the template include:
 * [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) dependencies, which can be removed via setup.gradle if necessary.
 * [Room](https://developer.android.com/training/data-storage/room) dependencies, which can be removed via setup.gradle if necessary.
 * [Paparazzi](https://github.com/cashapp/paparazzi) dependncy, which can be removed via setup.gradle if necessary.
-
+* [Dokka](https://github.com/Kotlin/dokka) dependncy, which document all project and module.
+* [Spotless](https://github.com/diffplug/spotless) dependncy, which is Keep your code spotless.
 ### Danger
 
 This template uses [Danger](https://danger.systems) which will perform some checks against our 

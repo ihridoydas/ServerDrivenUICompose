@@ -1,0 +1,53 @@
+{
+  "data": {
+    "12131h-13414j314-141jj-14124": {
+      "description": "jhrtkjr3hekjhwgkjhkj",
+      "id": "12131h-13414j314-141jj-14124",
+      "isFavorite": "\"true\"",
+      "title": "Title goes Here"
+    },
+    "123124-2352-245235-2523ff2-23r42v": {
+      "description": "Title 4 goes here",
+      "id": "123124-2352-245235-2523ff2-23r42v",
+      "isFavorite": "\"false\"",
+      "title": "Hello skhdfijhsijfh"
+    },
+    "3242j-2342n-2342n-234234m": {
+      "description": "Title 5 goes here",
+      "id": "3242j-2342n-2342n-234234m",
+      "isFavorite": "\"false\"",
+      "title": "hellodsfihjskj"
+    },
+    "3423jn2-23423-njnjhb2-234nj": {
+      "description": "\"Title jbjbsjdhfbjhsbn\"",
+      "id": "3423jn2-23423-njnjhb2-234nj",
+      "isFavorite": "\"false\"",
+      "title": "Title 3 Goes here"
+    },
+    "78456h-23478j-gyg878-23423n": {
+      "description": "Title 6 goes here",
+      "id": "78456h-23478j-gyg878-23423n",
+      "isFavorite": "\"false\"",
+      "title": "heshdfjsndkjfs"
+    },
+    "sdf121-1213m-452jkj-2fsdf2": {
+      "description": "sdfsfohtojhwohohjsojh",
+      "id": "sdf121-1213m-452jkj-2fsdf2",
+      "isFavorite": "\"true\"",
+      "title": "Title 2 Goes Here"
+    }
+  },
+  "layout": {
+    "layout_1": {
+      "type": "list"
+    },
+    "layout_2": {
+      "columns": 2,
+      "type": "grid"
+    }
+  },
+  "meta": {
+    "canFavorite": true,
+    "mode": "layout_2"
+  }
+}
